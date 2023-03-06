@@ -14,3 +14,4 @@ nohub.out
 *.sh
 .vscode/
 voice-file/
+model/ChatWaifu/model/
