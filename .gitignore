@@ -10,3 +10,7 @@ plugins/
 /revcfg.py
 prompts/
 logs/
+nohub.out
+*.sh
+.vscode/
+voice-file/
