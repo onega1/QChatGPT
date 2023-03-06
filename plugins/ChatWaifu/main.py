@@ -49,7 +49,7 @@ def process_mod(answer, sender_id):
 
         # 执行命令转换为手机可以收听的语音
         if platform.system() == "Linux":
-            cmd = f"""ffmpeg -i {voice_wav} -f s16le {voice_pcm} & \
+            cmd = """ffmpeg -i {voice_wav} -f s16le {voice_pcm} & \
             .\\plugins\\ChatWaifu\\silk-v3-decoder\\converter.sh  {voice_pcm} {voice_silk} -tencent"""
         else:
             cmd = f""".\\plugins\\ChatWaifu\\ffmpeg\\ffmpeg.exe -i {voice_wav} -f s16le {voice_pcm} & \
@@ -95,11 +95,7 @@ class HelloPlugin(Plugin):
     # 当收到文字消息时触发
     @on(NormalMessageResponded)
     def group_normal_message_received(self, event: EventContext, **kwargs):
-        print('收到消息~~')
-        print(kwargs['launcher_id'])
-        print(kwargs["response_text"])
         msg = kwargs["response_text"]
-
         msg = re.sub(r'<\|im_end\|>', '', msg)
         launcher_type = kwargs['launcher_type']
         launcher_id = kwargs['launcher_id']
@@ -110,7 +106,6 @@ class HelloPlugin(Plugin):
             voice = process_mod(msg, sender_id)
             # 如果配置了GoCQ连接，则使用GoCQ发送消息
             if waifu_config.gocq_voice:
-                print('使用GoCQ发送消息~~')
                 self._send_gocq_message_voice(launcher_type, msg, launcher_id,
                                               waifu_config.gocq_url, sender_id=sender_id)
                 if not waifu_config.only_voice:
@@ -118,10 +113,8 @@ class HelloPlugin(Plugin):
                                             waifu_config.gocq_url)
             else:
                 # 使用QChatGPT提供的插件host发送消息
-                print('使用QChatGPT~~')
                 self_host.send_group_message(launcher_id, voice)
                 if not waifu_config.only_voice:
-                    print('only_voice~~')
                     self_host.send_group_message(launcher_id, msg)
             event.prevent_default()
 
