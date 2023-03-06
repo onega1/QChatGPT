@@ -1,0 +1,6 @@
+{
+    "ChatWaifu": {
+        "path": "plugins/ChatWaifu/main.py",
+        "enabled": true
+    }
+}

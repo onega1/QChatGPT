@@ -5,12 +5,11 @@ database.db
 qchatgpt.log
 config.py
 /banlist.py
-plugins/
 !plugins/__init__.py
 /revcfg.py
 prompts/
 logs/
-nohub.out
+nohup.out
 *.sh
 .vscode/
 voice-file/
