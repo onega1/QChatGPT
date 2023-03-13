@@ -5,13 +5,14 @@ database.db
 qchatgpt.log
 config.py
 /banlist.py
-plugins/
 !plugins/__init__.py
 /revcfg.py
 prompts/
 logs/
-nohub.out
+nohup.out
 *.sh
 .vscode/
 voice-file/
 model/ChatWaifu/model/
+plugins/ChatWaifu/ffmpeg/
+plugins/ChatWaifu/silk-v3-decoder/windows/
